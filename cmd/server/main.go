@@ -5,6 +5,7 @@ import (
 	"net"
 
 	"go.temporal.io/sdk/client"
+	"go.temporal.io/sdk/converter"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
@@ -14,15 +15,12 @@ import (
 )
 
 func main() {
-	// ctx, cancel := context.WithCancel(context.Background())
-	// defer cancel()
-
-	// sigs := make(chan os.Signal, 1)
-	// signal.Notify(sigs, syscall.SIGTERM, syscall.SIGINT)
+	protoConverter := converter.NewProtoPayloadConverter()
+	converter := converter.NewCompositeDataConverter(protoConverter)
 
 	srv := grpc.NewServer()
 	{
-		s, err := server.New(domain.New(), client.Options{})
+		s, err := server.New(domain.New(), client.Options{DataConverter: converter})
 		if err != nil {
 			log.Fatalf("failed to create server: %v", err)
 		}

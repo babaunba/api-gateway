@@ -71,7 +71,7 @@ func RegisterLabelsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/labels.v1.Labels/GetLabels", runtime.WithHTTPPathPattern("/get-labels"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gen.proto.labels.v1.Labels/GetLabels", runtime.WithHTTPPathPattern("/get-labels"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -129,7 +129,7 @@ func RegisterLabelsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/labels.v1.Labels/GetLabels", runtime.WithHTTPPathPattern("/get-labels"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/gen.proto.labels.v1.Labels/GetLabels", runtime.WithHTTPPathPattern("/get-labels"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

@@ -19,7 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Labels_GetLabels_FullMethodName = "/labels.v1.Labels/GetLabels"
+	Labels_GetLabels_FullMethodName = "/gen.proto.labels.v1.Labels/GetLabels"
 )
 
 // LabelsClient is the client API for Labels service.
@@ -108,7 +108,7 @@ func _Labels_GetLabels_Handler(srv interface{}, ctx context.Context, dec func(in
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Labels_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "labels.v1.Labels",
+	ServiceName: "gen.proto.labels.v1.Labels",
 	HandlerType: (*LabelsServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
