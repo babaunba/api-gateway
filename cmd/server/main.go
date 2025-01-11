@@ -10,17 +10,17 @@ import (
 	"google.golang.org/grpc/reflection"
 
 	"github.com/babaunba/project-management/api-gateway/gen/proto/labels/v1"
-	"github.com/babaunba/project-management/api-gateway/internal/domain"
 	"github.com/babaunba/project-management/api-gateway/internal/server"
 )
 
 func main() {
-	protoConverter := converter.NewProtoPayloadConverter()
+	protoConverter := converter.NewProtoJSONPayloadConverter()
+	converter.NewProtoJSONPayloadConverter()
 	converter := converter.NewCompositeDataConverter(protoConverter)
 
 	srv := grpc.NewServer()
 	{
-		s, err := server.New(domain.New(), client.Options{DataConverter: converter})
+		s, err := server.New(client.Options{DataConverter: converter})
 		if err != nil {
 			log.Fatalf("failed to create server: %v", err)
 		}
