@@ -37,8 +37,12 @@ components:
             properties:
                 title:
                     type: string
-                content:
+                body:
                     type: string
+                labels:
+                    type: array
+                    items:
+                        type: string
         GetLabelsResponse:
             type: object
             properties:
