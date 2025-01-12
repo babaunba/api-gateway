@@ -43,6 +43,8 @@ components:
                     type: array
                     items:
                         type: string
+                creator:
+                    type: string
         GetLabelsResponse:
             type: object
             properties:
